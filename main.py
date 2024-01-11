@@ -20,6 +20,8 @@ def ablesci(headers):
     url = "https://www.ablesci.com/user/sign"
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
+        response_data = response.json()["data"]
+        msg = response_data["msg"]
         return response.json()
 
 
@@ -52,8 +54,7 @@ if __name__ == "__main__":
     }
 
     if pushToken != None:
-        msg = ablesci(headers=headers)
-        content = "今日科研通签到！\n" + str(msg)
+        content = msg
         requests.post('https://www.pushplus.plus/send', { 'token': pushToken, 'title': '科研通签到', 'content': content });
 
 
