@@ -13,6 +13,7 @@ FilePath: /Ablesci-checkin/main.py
 import requests
 import os
 import json
+
 env = os.environ.get("CONFIG")
 
 
@@ -23,6 +24,8 @@ def ablesci(headers):
         response_data = response.json()["data"]
         msg = response_data["msg"]
         return response.json()
+    else:
+        return None
 
 
 if __name__ == "__main__":
@@ -32,13 +35,11 @@ if __name__ == "__main__":
             config = json.loads(f.read())
     else:
         config = json.loads(env)
-    
 
     _check_item = config.get("ablesci", [])[0]
     pushToken = config.get("PUSHTOKEN", [])
-    
 
-    Cookie = _check_item.get("cookie",[])
+    Cookie = _check_item.get("cookie", [])
     headers = {
         "Accept": "application/json, text/javascript, */*; q=0.01",
         "Accept-Encoding": "gzip, deflate, br",
@@ -53,8 +54,12 @@ if __name__ == "__main__":
         "X-Requested-With": "XMLHttpRequest"
     }
 
-    if pushToken != None:
-        content = msg
-        requests.post('https://www.pushplus.plus/send', { 'token': pushToken, 'title': '科研通签到', 'content': content });
-
+    response_data = ablesci(headers)
+    if response_data:
+        msg = response_data["data"]["msg"]
+        if pushToken != None:
+            content = msg
+            requests.post('https://www.pushplus.plus/send', {'token': pushToken, 'title': '科研通签到', 'content': content})
+    else:
+        print("Unable to get response data from ablesci.")
 
