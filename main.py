@@ -21,11 +21,11 @@ def ablesci(headers):
     url = "https://www.ablesci.com/user/sign"
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        response_data = response.json()["data"]
-        msg = response_data["msg"]
-        return response.json()
+        msg = response.json()["msg"]
+        return msg
     else:
         return None
+
 
 
 if __name__ == "__main__":
@@ -55,11 +55,9 @@ if __name__ == "__main__":
     }
 
     response_data = ablesci(headers)
-    if response_data:
-        msg = response_data["data"]["msg"]
-        if pushToken != None:
-            content = msg
+    if response_data is not None:
+        content = response_data
+        if pushToken is not None:
             requests.post('https://www.pushplus.plus/send', {'token': pushToken, 'title': '科研通签到', 'content': content})
     else:
         print("Unable to get response data from ablesci.")
-
