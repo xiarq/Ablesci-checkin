@@ -4,5 +4,5 @@
             "cookie": "security_session_verify=3064f259740812f4f599a970dfdf01d2; advanced-frontend=v7u4a4p25pl1dr7jkcamcdvv06; _identity-frontend=2594e5229527d976d1a7bb35b5df4dd1a6cb1029e7ab1dcef3b2d74b7410f440a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A50%3A%22%5B65017%2C%22FOcx-ny9EQM8wK7uByGCmp8q0ZoIJNJb%22%2C2592000%5D%22%3B%7D; _csrf=4ee688c2ce98221aa64fd39fb2fd164d03c1ef2ab945fb176d9990ea77fdcd52a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%222ouz91bMChmr3koz-Baes69-PE_vwfiH%22%3B%7D; ablesci-serial=d94ed5e5bf0131f783d9ca6e396a8c17"
         }
     ],
-    "PUSHTOKEN": "634b0f64710a48829150c8856de43551"
+    "pushToken": "634b0f64710a48829150c8856de43551"
 }
